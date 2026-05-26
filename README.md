@@ -1,1 +1,0 @@
-# HAS---Pharmacy-Management-System
