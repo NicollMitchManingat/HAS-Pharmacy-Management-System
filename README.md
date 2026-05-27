@@ -4,14 +4,14 @@
 
 ### 1. Base URL
 ```
-http://localhost:3000/api/pharmacy
+http://localhost:6767/api/pharmacy
 ```
 
 ### 2. Environment Variables (create in Postman)
 
 | Variable | Initial Value | Description |
 |----------|--------------|-------------|
-| `base_url` | `http://localhost:3000/api/pharmacy` | Pharmacy service |
+| `base_url` | `http://localhost:6767/api/pharmacy` | Pharmacy service |
 | `auth_url` | `https://has-auth.onrender.com/api` | Auth system |
 | `adapter_url` | `https://has-adapter-layer.onrender.com/api/adapter` | Adapter layer |
 | `token` | *(leave empty)* | Filled after login |
@@ -101,7 +101,7 @@ Pick an `_id` from the response and set it as `appointment_id`.
 
 ### 4a. Patient Prescription History
 
-**Sample URL:** `http://localhost:3000/api/pharmacy/prescriptions/patient/69b6947d833e04011f7406bd`
+**Sample URL:** `http://localhost:6767/api/pharmacy/prescriptions/patient/69b6947d833e04011f7406bd`
 
 ```
 GET {{base_url}}/prescriptions/patient/{{patient_id}}
@@ -114,7 +114,7 @@ Authorization: Bearer {{token}}
 
 ### 4b. Consultation Prescription (by appointment)
 
-**Sample URL:** `http://localhost:3000/api/pharmacy/prescriptions/consultation/609a2b3c4f5a6b7c8d9e0f01?patientId=69b6947d833e04011f7406bd`
+**Sample URL:** `http://localhost:6767/api/pharmacy/prescriptions/consultation/609a2b3c4f5a6b7c8d9e0f01?patientId=69b6947d833e04011f7406bd`
 
 ```
 GET {{base_url}}/prescriptions/consultation/{{appointment_id}}?patientId={{patient_id}}
@@ -127,7 +127,7 @@ Authorization: Bearer {{token}}
 
 ### 4c. Search Medicines
 
-**Sample URL:** `http://localhost:3000/api/pharmacy/medicines/search?query=aspirin`
+**Sample URL:** `http://localhost:6767/api/pharmacy/medicines/search?query=aspirin`
 
 ```
 GET {{base_url}}/medicines/search?query=aspirin
@@ -148,7 +148,7 @@ Authorization: Bearer {{token}}
 
 ### 4d. Create Order
 
-**Sample URL:** `http://localhost:3000/api/pharmacy/orders/create`
+**Sample URL:** `http://localhost:6767/api/pharmacy/orders/create`
 
 ```
 POST {{base_url}}/orders/create
@@ -199,7 +199,7 @@ Copy the returned `id` as `order_id`.
 
 ### 4e. Update Order Status
 
-**Sample URL:** `http://localhost:3000/api/pharmacy/orders/1/status`
+**Sample URL:** `http://localhost:6767/api/pharmacy/orders/1/status`
 
 ```
 PUT {{base_url}}/orders/{{order_id}}/status
@@ -219,7 +219,7 @@ Content-Type: application/json
 
 ### No Token
 
-**Sample URL:** `http://localhost:3000/api/pharmacy/medicines/search?query=aspirin`
+**Sample URL:** `http://localhost:6767/api/pharmacy/medicines/search?query=aspirin`
 
 ```
 GET {{base_url}}/medicines/search?query=aspirin
@@ -238,7 +238,7 @@ Authorization: Bearer invalidtoken123
 
 ### Wrong Role (e.g. `patient` trying to create order)
 
-**Sample URL:** `https://has-auth.onrender.com/api/auth/register` (register), then `http://localhost:3000/api/pharmacy/orders/create` (forbidden)
+**Sample URL:** `https://has-auth.onrender.com/api/auth/register` (register), then `http://localhost:6767/api/pharmacy/orders/create` (forbidden)
 
 Create a patient token (register a new user with default `patient` role):
 
@@ -272,7 +272,7 @@ Content-Type: application/json
 
 ### Missing patientId on consultation route
 
-**Sample URL:** `http://localhost:3000/api/pharmacy/prescriptions/consultation/123`
+**Sample URL:** `http://localhost:6767/api/pharmacy/prescriptions/consultation/123`
 
 ```
 GET {{base_url}}/prescriptions/consultation/123
@@ -282,7 +282,7 @@ Authorization: Bearer {{token}}
 
 ### Missing search query
 
-**Sample URL:** `http://localhost:3000/api/pharmacy/medicines/search`
+**Sample URL:** `http://localhost:6767/api/pharmacy/medicines/search`
 
 ```
 GET {{base_url}}/medicines/search
@@ -292,7 +292,7 @@ Authorization: Bearer {{token}}
 
 ### Invalid order ID
 
-**Sample URL:** `http://localhost:3000/api/pharmacy/orders/99999/status`
+**Sample URL:** `http://localhost:6767/api/pharmacy/orders/99999/status`
 
 ```
 PUT {{base_url}}/orders/99999/status
@@ -305,7 +305,7 @@ Content-Type: application/json
 
 ### Adapter offline / wrong patient
 
-**Sample URL:** `http://localhost:3000/api/pharmacy/prescriptions/patient/nonexistent123`
+**Sample URL:** `http://localhost:6767/api/pharmacy/prescriptions/patient/nonexistent123`
 
 ```
 GET {{base_url}}/prescriptions/patient/nonexistent123
